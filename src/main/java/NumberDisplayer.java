@@ -1,8 +1,10 @@
+import java.util.List;
+
 public class NumberDisplayer {
-    public void displayUserNumber(int[] userNumber) {
+    public void displayUserNumber(List<Integer> userNumbers) {
         System.out.println("Your numbers are:");
-        for (int i : userNumber) {
-            System.out.print(i + " ");
+        for (int number : userNumbers) {
+            System.out.print(number + " ");
         }
     }
 }
