@@ -6,12 +6,15 @@ import java.util.Set;
 
 class WinningNumberGenerator {
 
+    //    List<Integer> drawWinningNumbers() {
+//        Set<Integer> lotteryNumbers = new HashSet<>();
+//        while (lotteryNumbers.size() < 6) {
+//            int randomNum = (int) (Math.random() * 99);
+//            lotteryNumbers.add(randomNum);
+//        }
+//        return lotteryNumbers.stream().toList();
+//    }
     List<Integer> drawWinningNumbers() {
-        Set<Integer> lotteryNumbers = new HashSet<>();
-        while (lotteryNumbers.size() < 6) {
-            int randomNum = (int) (Math.random() * 99);
-            lotteryNumbers.add(randomNum);
-        }
-        return lotteryNumbers.stream().toList();
+        return List.of(1, 4, 5, 89, 90, 56);
     }
 }
