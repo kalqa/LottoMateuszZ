@@ -1,13 +1,22 @@
 package pl.games.lotto;
 
-import java.util.*;
-
+import pl.games.GameResult;
 import pl.games.messenger.UserMessenger;
 
-class Main {
-    public static void main(String[] lotteryGame) {
-        UserNumbersGenerator userNumberGenerator = new UserNumbersGenerator();
-        List<Integer> userNumbers = userNumberGenerator.getUserNumbers(new ArrayList<>());
+import java.util.List;
+
+public class LottoGame {
+
+    GetUserNumbers getUserNumbers;
+
+    public LottoGame(GetUserNumbers getUserNumbers) {
+        this.getUserNumbers = getUserNumbers;
+    }
+
+    public GameResult play() {
+//        GetUserNumbers getUserNumbers = new UserNumbersReceiver();
+//        UserNumbersReceiver userNumberGenerator = new UserNumbersReceiver();
+        List<Integer> userNumbers = getUserNumbers.getUserNumbers(); // z testów jednostkowych
 
         UserMessenger numberDisplayer = new UserMessenger();
         numberDisplayer.displayUserNumber(userNumbers);
@@ -22,10 +31,7 @@ class Main {
 
         ResultAnnouncer resultAnnouncer = new ResultAnnouncer();
         resultAnnouncer.announceResults(userNumbers, lotteryNumbers);
-    }
 
-    static boolean validateNumberInGivenRange(int number) {
-        return number >= 1 && number <= 99;
+        return new GameResult("you won", true);
     }
-
 }

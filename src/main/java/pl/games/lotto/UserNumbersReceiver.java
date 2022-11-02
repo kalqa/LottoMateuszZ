@@ -5,11 +5,11 @@ import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
-import static pl.games.lotto.Main.validateNumberInGivenRange;
 
-public class UserNumbersGenerator {
+public class UserNumbersReceiver implements GetUserNumbers {
 
-    List<Integer> getUserNumbers(ArrayList<Integer> list) {
+    @Override
+    public List<Integer> getUserNumbers() {
         int number;
         Scanner scanner = new Scanner(System.in);
         List<Integer> userNumbers = new ArrayList<>();
@@ -33,8 +33,11 @@ public class UserNumbersGenerator {
                 }
             }
         }
-
         return userNumbers;
+    }
+
+    static boolean validateNumberInGivenRange(int number) {
+        return number >= 1 && number <= 99;
     }
 
 }
