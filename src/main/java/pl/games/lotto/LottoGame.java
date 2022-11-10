@@ -1,9 +1,8 @@
 package pl.games.lotto;
 
+import java.util.List;
 import pl.games.GameResult;
 import pl.games.messenger.UserMessenger;
-
-import java.util.List;
 
 public class LottoGame {
 
@@ -14,10 +13,7 @@ public class LottoGame {
     }
 
     public GameResult play() {
-//        GetUserNumbers getUserNumbers = new UserNumbersReceiver();
-//        UserNumbersReceiver userNumberGenerator = new UserNumbersReceiver();
         List<Integer> userNumbers = getUserNumbers.getUserNumbers(); // z testów jednostkowych
-
         UserMessenger numberDisplayer = new UserMessenger();
         numberDisplayer.displayUserNumber(userNumbers);
 
@@ -31,7 +27,9 @@ public class LottoGame {
 
         ResultAnnouncer resultAnnouncer = new ResultAnnouncer();
         resultAnnouncer.announceResults(userNumbers, lotteryNumbers);
-
-        return new GameResult("you won", true);
+        UserNumbersValidator userNumbersValidator = new UserNumbersValidator();
+        return userNumbersValidator.getGameResult(userNumbers);
     }
+
+
 }
