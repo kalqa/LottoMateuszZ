@@ -12,7 +12,7 @@ public class Main {
             while (true) {
                 try {
                     number = scanner.nextInt();
-                    if (validateNumberInGivenRange(number)) {
+                    if (number >= 1 && number <= 99) {
                         userNumber[i] = number;
                         break;
                     } else {
@@ -28,36 +28,13 @@ public class Main {
             }
         }
 
-        NumberDisplayer numberDisplayer = new NumberDisplayer();
-        numberDisplayer.displayUserNumber(userNumber);
-
-        System.out.println();
-        int[] lotteryNumbers = drawWinningNumbers();
-
-        printDrawnWinningNumbers(lotteryNumbers);
+        System.out.println("Your numbers are:");
+        for (int i : userNumber) {
+            System.out.print(i + " ");
+        }
 
         System.out.println();
 
-        announceResults(userNumber, lotteryNumbers);
-    }
-
-    private static void announceResults(int[] userNumber, int[] lotteryNumbers) {
-        if (Arrays.equals(userNumber, lotteryNumbers))
-            System.out.println("Congratulations, you have won!");
-        else {
-            System.out.println("Sorry, but you didn't win. It's not you lucky day perhaps. Try your luck next time. ");
-        }
-    }
-
-    private static void printDrawnWinningNumbers(int[] lotteryNumbers) {
-        System.out.println("Draw numbers are:");
-        for (int j : lotteryNumbers) {
-            System.out.print(j + " ");
-
-        }
-    }
-
-    private static int[] drawWinningNumbers() {
         int[] lotteryNumbers = new int[6];
         int randomNum;
         for (int i = 0; i < 6; i++) {
@@ -70,10 +47,19 @@ public class Main {
             }
             lotteryNumbers[i] = randomNum;
         }
-        return lotteryNumbers;
-    }
 
-    private static boolean validateNumberInGivenRange(int number) {
-        return number >= 1 && number <= 99;
+        System.out.println("Draw numbers are:");
+        for (int j : lotteryNumbers) {
+            System.out.print(j + " ");
+
+        }
+
+        System.out.println();
+
+        if (Arrays.equals(userNumber, lotteryNumbers))
+            System.out.println("Congratulations, you have won!");
+        else {
+            System.out.println("Sorry, but you didn't win. It's not you lucky day perhaps. Try your luck next time. ");
+        }
     }
 }
